@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header-section">
+        <div class="logo-section">
+            <a href=""><img src="image/logo.png" alt=""></a>
+        </div>
+        <form id="form">
+            <div class="form-content">
+                <input type="text" placeholder="Search" id="search" class="search">
+            </div>
+        </form>
+        <div class="genre-section">
+            <span id="openbtn-genre" style="font-size:30px;cursor:pointer; color: white;">&#9776; Genre</span>
+        </div>
+    </header>
+
+    <div class="head-para">
+        <h1>Now Playing</h1>
+    </div>
+
+
+
+    <!-- side genres area  -->
+
+    <div id="mySidenav" class="sidenav">
+        <a class="closebtn-genre">&times;</a>
+        <div id="genre-element">
+            <div class="genre-element">Action </div>
+            <div class="genre-element">Arcade</div>
+            <div class="genre-element">Adventure</div>
+        </div>
+
+    </div>
+
+    <!-- side genres area  -->
+
+
+    <!-- movie details section  -->
+    <h3 id="price"></h3>
+    <div id="myNav" class="overlay">
+        <a class="closebtn2">&times;</a>
+
+        <div id="movie_details">
+            
+            <div class="main_card">
+                <div class="card_left">
+                    <div class="card_datails">
+                        <h1 id="details-movie-title">Mission: Impossible – Fallout Mission: Impossible – Fallout</h1>
+                        <div class="card_cat">
+                            <p class="rating">rating</p>
+                            <p class="language">2018</p>
+                        </div>
+                        <div class="card_cat">
+        
+                            <p class="genre">Action | Adventure </p>
+                            <p class="time">2h 28m</p>
+                        </div>
+                        <p class="disc">Lorem ipsum allies, race against time after a mission gone wrong.</p>
+                    <div class="social-btn">
+                        <p id="ticket-price"><span id="price">500</span></p>
+                        <button id="buy-button">
+                             Book Now
+                        </button>
+                    </div>	
+                    </div>
+                </div>
+                <div class="card_right">
+                    <div class="img_container">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/f/ff/MI_%E2%80%93_Fallout.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- movie details section  -->
+
+    <main id="main">
+
+        <div class="movie">
+            <img src="" alt="Image">
+
+            <div class="movie-info">
+                <h3>Movie Title</h3>
+                <span class="green"></span>
+            </div>
+            <div class="overview">
+
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="script.js"></script>
+
+</html>
