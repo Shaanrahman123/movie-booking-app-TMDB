@@ -9,7 +9,8 @@ const form = document.getElementById('form')
 const search = document.getElementById('search')
 
 
-// genres area
+// 88888888888888888888888888888888888888888888  genres area  888888888888888888888888888888888888888888
+
 const genElement = document.getElementById("genre-element");
 
 var selectedGenre = [];
@@ -64,16 +65,38 @@ function highlightSelection() {
     }
 
 }
-// genres area
+
+// open the genre part
+function openGenre() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeGenre() {
+    document.getElementById("mySidenav").style.width = "0";
+}
 
 
+document.querySelector('#openbtn-genre').addEventListener('click', openGenre)
+document.querySelector('.closebtn-genre').addEventListener('click', closeGenre)
+// open the genre part
+
+
+
+
+// 88888888888888888888888888888888888888888888  genres area  888888888888888888888888888888888888888888
+
+
+
+// 8888888888888888888    Fetch movie and show on main page  88888888888888888888888
+
+async function getMovies(url) {
+    const res = await fetch(url)
+    const data = await res.json()
+
+    showMovies(data.results)
+}
 
 getMovies(API_URL);
-function getMovies(url) {
-    fetch(url).then(res => res.json()).then(data => {
-        showMovies(data.results);
-    })
-}
 
 function showMovies(data) {
     main.innerHTML = '';
@@ -88,11 +111,11 @@ function showMovies(data) {
         <div id="${id}">
             <img src="${IMG_PATH + poster_path}" alt="${title}">
             <div class="movie-info">
-                
+            <h3>${title}</h3>
                 <div class ="rating_lang">
-                <span class="${getColor(vote_average)}">${vote_average}</span>
+                <span>${vote_average}</span>
                 <span >${original_language}</span></div>
-                <h3>${title}</h3>
+                
             </div>
         </div>
         `
@@ -105,7 +128,16 @@ function showMovies(data) {
 }
 
 
-// get movie details area 
+
+
+// 8888888888888888888    Fetch movie and show on main page  88888888888888888888888
+
+
+
+
+
+
+// 8888888888888888888    get movie details area  88888888888888888888888
 
 const detailsofmovie = document.getElementById("movie_details")
 
@@ -178,25 +210,14 @@ document.querySelector('.closebtn2').addEventListener('click', closeNav)
 
 
 
-// get movie details area 
-
-function getColor(vote) {
-    if (vote >= 8) {
-        return 'green';
-    }
-    else if (vote >= 5) {
-        return 'orange'
-    }
-    else {
-        return 'red';
-    }
-}
+// 8888888888888888888    get movie details area  88888888888888888888888
 
 
 
+// 8888888888888888888    Searching the movie  88888888888888888888888
 
 
-// ********************* Search Part **********************
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -211,25 +232,7 @@ form.addEventListener('submit', (e) => {
         getMovies(API_URL)
     }
 })
-// ********************* Search Part **********************
-
-// open the genre part
 
 
-function openGenre() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
+// 8888888888888888888    Searching the movie  88888888888888888888888
 
-function closeGenre() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
-
-document.querySelector('#openbtn-genre').addEventListener('click', openGenre)
-document.querySelector('.closebtn-genre').addEventListener('click', closeGenre)
-
-
-
-
-
-// open the genre part
