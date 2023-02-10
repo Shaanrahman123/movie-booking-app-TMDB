@@ -21,11 +21,11 @@
 <body>
 
          
-        <header class="header-section">
+        <header id="scroll-Top" class="header-section">
             <div class="logo-section">
                 <a href=""><img src="image/logo.png" alt=""></a>
             </div>
-            <form id="form">
+            <div id="form">
                 <div class="form-content">
                     <input type="text" placeholder="Search" id="search" class="search">
                     <!-- <input id="input" placeholder="Type fast here.."/> -->
@@ -34,9 +34,13 @@
                 <div class="genre-section">
                     <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
                 </div>
-            </form>
+            </div>
         </header>
-        <div id="home-banner" class="home-banner"></div>
+        <div id="home-banner" class="home-banner">
+            <div class="banner-text typewriter"> 
+                <h1>Unlimited movies, TV shows and more.</h1>
+          </div>
+        </div>
 
     </div>
 
@@ -148,6 +152,23 @@
     </div>
 
 </body>
+
+<script>
+
+// scroll down to put the nav on top
+
+window.onscroll = function() {
+    scrollFunction()
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50 ) {
+    document.getElementById("scroll-Top").style.top = "0px";
+  } else {
+    document.getElementById("scroll-Top").style.top = "50px";
+  }
+}
+</script>
 <script src="script.js"></script>
 
 </html>
