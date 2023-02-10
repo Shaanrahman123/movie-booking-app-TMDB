@@ -11,39 +11,87 @@
 
 <style>
     body {
-    background-color: #22254b;
-    background: linear-gradient(to bottom, #000428, #630330);
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-}
+        background-color: #22254b;
+        background: linear-gradient(to bottom, black, #130109);
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+    }
 </style>
 
 <body>
-    <div class="home-banner">
-    <header class="header-section">
-        <div class="logo-section">
-            <a href=""><img src="image/logo.png" alt=""></a>
-        </div>
-        <form id="form">
-            <div class="form-content">
-                <input type="text" placeholder="Search" id="search" class="search">
+
+         
+        <header class="header-section">
+            <div class="logo-section">
+                <a href=""><img src="image/logo.png" alt=""></a>
             </div>
-        
-        <div class="genre-section">
-            <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
+            <form id="form">
+                <div class="form-content">
+                    <input type="text" placeholder="Search" id="search" class="search">
+                    <!-- <input id="input" placeholder="Type fast here.."/> -->
+                </div>
+
+                <div class="genre-section">
+                    <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
+                </div>
+            </form>
+        </header>
+        <div id="home-banner" class="home-banner"></div>
+
+    </div>
+
+    <div class="head-para" >
+        <h1 id="playing-hide">Now Playing</h1>
+    </div>
+    <!-- movie details section  -->
+
+    <main id="main">
+
+        <div class="movie">
+            <img src="" alt="Image">
+            <div class="movie-info">
+                <span></span>
+                <span></span>
+                <h3></h3>
+            </div>
         </div>
-    </form>
-    </header>
+    </main>
 
-
-
-
+    <div class="head-para" id="popular-hide">
+        <h1>Most Popular</h1>
     </div>
 
-    <div class="head-para">
-        <h1>Now Playing</h1>
+    <section id="popular">
+        <div class="movie">
+            <img src="" alt="Image">
+
+            <div class="movie-info">
+
+                <span>rating</span>
+                <span>language</span>
+                <h3>title</h3>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="head-para" id="toprated-hide">
+        <h1>Top Rated</h1>
     </div>
 
+    <section id="topRated">
+        <div class="movie">
+            <img src="" alt="Image">
+
+            <div class="movie-info">
+
+                <span>rating</span>
+                <span>language</span>
+                <h3>title</h3>
+            </div>
+        </div>
+    </section>
 
 
     <!-- side genres area  -->
@@ -51,14 +99,13 @@
     <div id="mySidenav" class="sidenav">
         <a class="closebtn-genre">&times;</a>
         <div id="genre-element">
-            <div class="genre-element">Action </div>
-            <div class="genre-element">Arcade</div>
-            <div class="genre-element">Adventure</div>
+            <div class="genre-element"></div>
         </div>
 
     </div>
 
     <!-- side genres area  -->
+
 
 
     <!-- movie details section  -->
@@ -67,57 +114,38 @@
         <a class="closebtn2">&times;</a>
 
         <div id="movie_details">
-            
+
             <div class="main_card">
                 <div class="card_left">
                     <div class="card_datails">
-                        <h1 id="details-movie-title">Mission: Impossible – Fallout Mission: Impossible – Fallout</h1>
+                        <h1 id="details-movie-title"></h1>
                         <div class="card_cat">
-                            <p class="rating">rating</p>
-                            <p class="language">2018</p>
+                            <p class="rating"></p>
+                            <p class="language"></p>
                         </div>
                         <div class="card_cat">
-        
-                            <p class="genre">Action | Adventure </p>
-                            <p class="time">2h 28m</p>
+
+                            <p class="genre"></p>
+                            <p class="time"></p>
                         </div>
-                        <p class="disc">Lorem ipsum allies, race against time after a mission gone wrong.</p>
-                    <div class="social-btn">
-                        <p id="ticket-price"><span id="price">500</span></p>
-                        <button id="buy-button">
-                             Book Now
-                        </button>
-                    </div>	
-                </div>
-                <div class="back-movie-ground"></div>
-                <div class="card_right">
-                    <div class="img_container">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/f/ff/MI_%E2%80%93_Fallout.jpg" alt="">
+                        <p class="disc"></p>
+                        <div class="social-btn">
+                            <p id="ticket-price"><span id="price">200</span></p>
+                            <button id="buy-button">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                    <div class="back-movie-ground"></div>
+                    <div class="card_right">
+                        <div class="img_container">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/f/ff/MI_%E2%80%93_Fallout.jpg" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
-
-    <!-- movie details section  -->
-
-    <main id="main">
-
-        <div class="movie">
-            <img src="" alt="Image">
-
-            <div class="movie-info">
-                
-                <span ></span>
-                <span ></span>
-                <h3>Movie Title</h3>
-            </div>
-        </div>
-    </main>
 
 </body>
 <script src="script.js"></script>

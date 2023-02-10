@@ -7,6 +7,10 @@ html {
 }
 
 
+.pt-100{
+  padding-top: 100px;
+}
+
 
 
 ::-webkit-scrollbar {
@@ -96,13 +100,27 @@ body {
 
 .head-para {
   color: white;
-  margin-left: 61px;
+  margin: 61px 0px 51px 61px;
   font-size: 1.5rem;
 }
 
+.hide{
+  display: none;
+}
 
 
 main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#popular{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#topRated{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -806,7 +824,7 @@ button:hover {
 @media (min-width: 1000px) {
   .header-section {
     position: sticky;
-    top: 0;
+    top: 50px;
     padding: 1rem;
     display: flex;
     justify-content: space-around;
@@ -815,16 +833,18 @@ button:hover {
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px 0 rgba(5, 6, 15, 0.37);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 2;
   }
   .home-banner{
     z-index: -1;
-  margin-top: 0;
-    height: 500px;
+  margin-top: -118px;
+    height: 657px;
     width: 100%;
     /* background-color: purple; */
-    background-image: url(image/banner.gif);
+    position: relative;
+    background-image: url(image/banner3.jpg);
   }
 
 

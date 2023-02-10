@@ -1,10 +1,14 @@
 const API_URL = 'https://api.themoviedb.org/3/movie/now_playing?api_key=732226ccd502e9fe6b05962474129645'
+const API_URL_POPULAR = 'https://api.themoviedb.org/3/movie/popular?api_key=732226ccd502e9fe6b05962474129645&page=2'
+const API_URL_TOP_RATED = 'https://api.themoviedb.org/3/movie/top_rated?api_key=732226ccd502e9fe6b05962474129645'
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
 const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=732226ccd502e9fe6b05962474129645&query="'
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'api_key=732226ccd502e9fe6b05962474129645';
 
 const main = document.getElementById('main')
+const popularmovielist = document.getElementById('popular')
+const topRatedMovielist = document.getElementById('topRated')
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 
@@ -20,7 +24,7 @@ function setGenre() {
 
     fetch(BASE_URL + '/genre/movie/list?' + API_KEY)
         .then(res => res.json())
-        .then(({genres}) => {
+        .then(({ genres }) => {
             genres.forEach(genre => {
                 const genrebox = document.createElement('div');
                 genrebox.classList.add('genre-element');
@@ -48,7 +52,7 @@ function setGenre() {
                 genElement.append(genrebox);
             })
         })
-    }
+}
 
 
 function highlightSelection() {
@@ -88,6 +92,7 @@ document.querySelector('.closebtn-genre').addEventListener('click', closeGenre)
 
 
 // 8888888888888888888    Fetch movie and show on main page  88888888888888888888888
+
 
 async function getMovies(url) {
     const res = await fetch(url)
@@ -137,6 +142,111 @@ function showMovies(data) {
 
 
 
+// 8888888888888888888    Fetch movie and show on top rated 88888888888888888888888
+
+
+getMoviesTopRated(API_URL_TOP_RATED);
+
+
+async function getMoviesTopRated(topratedURL) {
+    const top = await fetch(topratedURL)
+    const toprated = await top.json()
+    // console.log(toprated.results)
+    showMoviesTopRated(toprated.results)
+}
+
+
+function showMoviesTopRated(toprated) {
+    topRatedMovielist.innerHTML = '';
+
+    toprated.forEach(topRatedMovie => {
+        const { title, poster_path, vote_average, original_language, id } = topRatedMovie
+
+        const top_rated_movie = document.createElement('div')
+        top_rated_movie.classList.add('movie')
+
+        top_rated_movie.innerHTML = `
+        <div id="${id}">
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+            <div class="movie-info">
+            <h3>${title}</h3>
+                <div class ="rating_lang">
+                <span>${vote_average}</span>
+                <span >${original_language}</span></div>
+                
+            </div>
+        </div>
+        `
+        topRatedMovielist.appendChild(top_rated_movie);
+
+        document.getElementById(id).addEventListener('click', () => {
+            openNav(topRatedMovie);
+        })
+    })
+}
+
+
+
+
+
+
+// 8888888888888888888    Fetch movie and show on Top rated 88888888888888888888888
+
+
+
+
+// 8888888888888888888    Fetch movie and show on most popular 88888888888888888888888
+
+
+
+async function getMoviesPopular(Popularurl) {
+    const pop = await fetch(Popularurl)
+    const popular = await pop.json()
+    showMoviesPopular(popular.results)
+}
+
+getMoviesPopular(API_URL_POPULAR);
+
+function showMoviesPopular(popular) {
+    popularmovielist.innerHTML = '';
+
+    popular.forEach(popularMovie => {
+        const { title, poster_path, vote_average, original_language, id } = popularMovie
+
+        const pop_movie_ele = document.createElement('div')
+        pop_movie_ele.classList.add('movie')
+
+        pop_movie_ele.innerHTML = `
+        <div id="${id}">
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+            <div class="movie-info">
+            <h3>${title}</h3>
+                <div class ="rating_lang">
+                <span>${vote_average}</span>
+                <span >${original_language}</span></div>
+                
+            </div>
+        </div>
+        `
+        popularmovielist.appendChild(pop_movie_ele);
+
+        document.getElementById(id).addEventListener('click', () => {
+            openNav(popularMovie);
+        })
+    })
+}
+
+
+
+// 8888888888888888888    Fetch movie and show on most popular 88888888888888888888888
+
+
+
+
+
+
+
+
 // 8888888888888888888    get movie details area  88888888888888888888888
 
 const detailsofmovie = document.getElementById("movie_details")
@@ -150,7 +260,128 @@ function openNav(movie) {
 
             let genreName = [];
             for (let i = 0; i < genres.length; i++) {
-                genreName.push(genres[i].name);
+                genreName.push(genres[i].name + " ");
+            }
+            const movieDetails = document.createElement('div');
+
+            let price = Math.floor(Math.random() * (300 - 250 + 1) + 250);
+
+            movieDetails.classList.add('main_card');
+            movieDetails.innerHTML = ` 
+            
+                <div class="card_left">
+                <div class="card_datails">
+                    <h1 id="details-movie-title">${title}</h1>
+                    <div class="card_cat">
+                        <p class="rating">${vote_average}</p>
+                        <p class="language">${original_language}</p>
+                    </div>
+                    <div class="card_cat">
+    
+                        <p class="genre">${genreName}</p>
+                        <p class="time">${runtime}<span>&nbspMin</span></p>
+                    </div>
+                    <p class="disc">${overview}</p>
+                <div class="social-btn">
+                    <p id="ticket-price"><span id="price">₹&nbsp${price}</span></p>
+                    <button id="buy-button">
+                         Book Now
+                    </button>
+                </div>	
+                </div>
+            </div>
+            <div class="card_right">
+                <div class="img_container">
+                    <img src="${IMG_PATH + poster_path}" alt="">
+                    </div>
+                </div>
+            </div>
+             
+                `
+            detailsofmovie.appendChild(movieDetails);
+
+            document.getElementById("buy-button").addEventListener("click", function () {
+                window.location.href = `checkout.html?price=${price}&title=${title}`;
+            });
+        })
+
+
+
+    document.getElementById("myNav").style.height = "100%";
+}
+
+
+
+function openNav(popularMovie) {
+    detailsofmovie.innerHTML = '';
+    let id = popularMovie.id;
+    fetch(BASE_URL + '/movie/' + id + '?' + API_KEY)
+        .then(res => res.json())
+        .then(({ title, overview, poster_path, original_language, vote_average, runtime, genres }) => {
+
+            let genreName = [];
+            for (let i = 0; i < genres.length; i++) {
+                genreName.push(genres[i].name + " ");
+            }
+            const movieDetails = document.createElement('div');
+
+            let price = Math.floor(Math.random() * (300 - 250 + 1) + 250);
+
+            movieDetails.classList.add('main_card');
+            movieDetails.innerHTML = ` 
+            
+                <div class="card_left">
+                <div class="card_datails">
+                    <h1 id="details-movie-title">${title}</h1>
+                    <div class="card_cat">
+                        <p class="rating">${vote_average}</p>
+                        <p class="language">${original_language}</p>
+                    </div>
+                    <div class="card_cat">
+    
+                        <p class="genre">${genreName}</p>
+                        <p class="time">${runtime}<span>&nbspMin</span></p>
+                    </div>
+                    <p class="disc">${overview}</p>
+                <div class="social-btn">
+                    <p id="ticket-price"><span id="price">₹&nbsp${price}</span></p>
+                    <button id="buy-button">
+                         Book Now
+                    </button>
+                </div>	
+                </div>
+            </div>
+            <div class="card_right">
+                <div class="img_container">
+                    <img src="${IMG_PATH + poster_path}" alt="">
+                    </div>
+                </div>
+            </div>
+             
+                `
+            detailsofmovie.appendChild(movieDetails);
+
+            document.getElementById("buy-button").addEventListener("click", function () {
+                window.location.href = `checkout.html?price=${price}&title=${title}`;
+            });
+        })
+
+
+
+    document.getElementById("myNav").style.height = "100%";
+}
+
+
+function openNav(topRatedMovie) {
+    detailsofmovie.innerHTML = '';
+    let id = topRatedMovie.id;
+    fetch(BASE_URL + '/movie/' + id + '?' + API_KEY)
+        .then(res => res.json())
+        .then(({ title, overview, poster_path, original_language, vote_average, runtime, genres }) => {
+
+            let genreName = [];
+            for (let i = 0; i < genres.length; i++) {
+                genreName.push(genres[i].name + " ");
             }
             const movieDetails = document.createElement('div');
 
@@ -214,25 +445,70 @@ document.querySelector('.closebtn2').addEventListener('click', closeNav)
 
 
 
-// 8888888888888888888    Searching the movie  88888888888888888888888
+// 8888888888888888888    Searching the movie with debounce function  88888888888888888888888
 
 
 
-form.addEventListener('submit', (e) => {
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault()
+
+//     const searchTerm = search.value;
+
+//     if (searchTerm && searchTerm !== '') {
+//         getMovies(SEARCH_API + searchTerm)
+
+//         search.value = ''
+//     }
+//     else if (searchTerm == '') {
+//         getMovies(API_URL)
+//     }
+// })
+
+const debounce = (func, wait, immediate) => {
+    let timeout
+
+    return function () {
+        const context = this, args = arguments
+        const later = function () {
+            timeout = null
+            if (!immediate) func.apply(context, args)
+        }
+
+        const callNow = immediate && !timeout
+        clearTimeout(timeout)
+        timeout = setTimeout(later, wait)
+        if (callNow) func.apply(context, args)
+    }
+}
+
+const x = document.getElementById("playing-hide");
+
+document.querySelector('#search').addEventListener('input', debounce((e) => {
+    const searchTerm = search.value;
     e.preventDefault()
 
-    const searchTerm = search.value;
+    if (searchTerm !== '') {
+        getMovies(SEARCH_API + searchTerm);
+        document.getElementById('topRated').style.display = 'none';
+        document.getElementById('popular').style.display = 'none';
+        document.getElementById('toprated-hide').style.display= 'none';
+        document.getElementById('home-banner').style.display='none';
+        x.innerText='Search Results'
+        document.getElementById('popular-hide').style.display= 'none';
 
-    if (searchTerm && searchTerm !== '') {
-        getMovies(SEARCH_API + searchTerm)
-
-        search.value = ''
     }
     else if (searchTerm == '') {
         getMovies(API_URL)
+        document.getElementById('topRated').style.display = 'block';
+        document.getElementById('popular').style.display = 'block';
+        document.getElementById('toprated-hide').style.display= 'block';
+        x.innerText='Now Playing';
+        document.getElementById('home-banner').style.display='block';
+        document.getElementById('popular-hide').style.display= 'block';
     }
-})
+    console.log(search.value);
+}, 600))
 
 
-// 8888888888888888888    Searching the movie  88888888888888888888888
+// 8888888888888888888    Searching the movie with debounce function 88888888888888888888888
 
