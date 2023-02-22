@@ -5,17 +5,16 @@
 
 :root,
 :root.light {
-  --color-bg: #ecc6fd;
-  --color-text: #000000;
+  --color-bg: #e7ebec;
+  --color-text: #eb333a;
   --card-bg-color: #fafafa;
-  --hero-banner-shadow: inset 2px -200px 93px -92px rgba(236, 198, 253, 1);
+  --hero-banner-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1);
   --movie-details-card: linear-gradient(to right, #fafafa, #81043e83);
-  --header: linear-gradient(to right, #9b466f83, #9b466f83);
+  --header: linear-gradient(to right, #eb333a, #eb333a);
 }
 
 :root.dark {
   --color-bg: linear-gradient(to bottom, black, #130109);
-  ;
   --color-text: #ffffff;
   --card-bg-color: #607d8b;
   --hero-banner-shadow: inset 2px -200px 93px -92px rgba(2, 0, 1, 1);
@@ -931,7 +930,8 @@ button:hover {
     /* background-color: purple; */
     position: relative;
     background-image: url(image/banner3.png);
-    box-shadow: var(--hero-banner-shadow);
+    /* box-shadow: var(--hero-banner-shadow); */
+    box-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1);
   }
 
 
