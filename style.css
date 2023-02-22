@@ -986,7 +986,7 @@ button:hover {
   }
 
   #form .form-content {
-    margin-right: 328px;
+    margin-right: 286px;
     margin-top: 2px;
   }
 
@@ -1008,6 +1008,9 @@ button:hover {
   }
   .search :focus{
     background: var(--search-bg);
+  }
+  .search::placeholder {
+    color: #fff;
   }
 }
 
