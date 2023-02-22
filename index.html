@@ -9,42 +9,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<style>
-    body {
-        background-color: #22254b;
-        background: linear-gradient(to bottom, black, #130109);
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-    }
-</style>
-
 <body>
 
-         
-        <header id="scroll-Top" class="header-section">
-            <div class="logo-section">
-                <a href=""><img src="image/logo.png" alt=""></a>
-            </div>
-            <div id="form">
-                <div class="form-content">
-                    <input type="text" placeholder="Search" id="search" class="search">
-                    <!-- <input id="input" placeholder="Type fast here.."/> -->
-                </div>
 
-                <div class="genre-section">
-                    <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
-                </div>
-            </div>
-        </header>
-        <div id="home-banner" class="home-banner">
-            <div class="banner-text typewriter"> 
-                <h1>Unlimited movies, TV shows and more.</h1>
-          </div>
+    <header id="scroll-Top" class="header-section">
+        <div class="logo-section">
+            <a href=""><img src="image/logo.png" alt=""></a>
         </div>
+        <div id="form">
+            <div class="form-content">
+                <input type="text" placeholder="Search" id="search" class="search">
+                <!-- <input id="input" placeholder="Type fast here.."/> -->
+            </div>
+
+            <div class="genre-section">
+                <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
+            </div>
+            <div class="theme-toggler">
+                <input type="checkbox" id="checkbox" class="checkbox">
+                <label for="checkbox" class="checkbox-label">
+                    <span class="ball"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+    <div id="home-banner" class="home-banner">
+        <div class="banner-text typewriter">
+            <h1>Unlimited movies, TV shows and more.</h1>
+        </div>
+    </div>
 
     </div>
 
-    <div class="head-para" >
+
+    <div class="head-para">
         <h1 id="playing-hide">Now Playing</h1>
     </div>
     <!-- movie details section  -->
@@ -143,7 +141,7 @@
                     <div class="back-movie-ground"></div>
                     <div class="card_right">
                         <div class="img_container">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/f/ff/MI_%E2%80%93_Fallout.jpg" alt="">
+                            <img src="" alt="">
                         </div>
                     </div>
                 </div>
@@ -155,19 +153,27 @@
 
 <script>
 
-// scroll down to put the nav on top
+    // scroll down to put the nav on top
 
-window.onscroll = function() {
-    scrollFunction()
-};
+    // if(screen.width > 900){
+        window.onscroll = function () {
+        scrollFunction()
+    };
+    // }
 
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50 ) {
-    document.getElementById("scroll-Top").style.top = "0px";
-  } else {
-    document.getElementById("scroll-Top").style.top = "50px";
-  }
-}
+
+
+    function scrollFunction() {
+        if (screen.width > 900) {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                document.getElementById("scroll-Top").style.top = "0px";
+            } else {
+                document.getElementById("scroll-Top").style.top = "50px";
+            }
+        }
+
+
+    }
 </script>
 <script src="script.js"></script>
 

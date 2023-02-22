@@ -1,3 +1,40 @@
+
+// dark and light theme toggler
+
+
+const modeBtn = document.getElementById('checkbox');
+modeBtn.onchange = (e) => {
+  if (modeBtn.checked === true) {
+    document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("dark")
+    window.localStorage.setItem('mode', 'dark');
+    console.log("Dark")
+  } else {
+    document.documentElement.classList.remove("dark")
+    document.documentElement.classList.add("light")
+    window.localStorage.setItem('mode', 'light');
+    console.log("light")
+  }
+}
+
+// const mode = window.localStorage.getItem('checkbox');
+// if (mode == 'dark') {
+//   modeBtn.checked = true;
+//   document.documentElement.classList.remove("light")
+//   document.documentElement.classList.add("dark")
+// }
+
+// if (mode == 'light') {
+//   modeBtn.checked = false;
+//   document.documentElement.classList.remove("dark")
+//   document.documentElement.classList.add("light")
+// }
+
+
+
+// dark and light theme toggler
+
+
 const API_URL = 'https://api.themoviedb.org/3/movie/now_playing?api_key=732226ccd502e9fe6b05962474129645'
 const API_URL_POPULAR = 'https://api.themoviedb.org/3/movie/popular?api_key=732226ccd502e9fe6b05962474129645&page=2'
 const API_URL_TOP_RATED = 'https://api.themoviedb.org/3/movie/top_rated?api_key=732226ccd502e9fe6b05962474129645'
