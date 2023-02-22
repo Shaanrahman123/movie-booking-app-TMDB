@@ -659,7 +659,7 @@ button:hover {
 
 @media (max-width: 427px) {
   body {
-    background: linear-gradient(to right, #000428, #630330);
+    /* background: linear-gradient(to right, #000428, #630330); */
     font-family: 'Poppins', sans-serif;
     margin: 0;
   }
@@ -781,7 +781,7 @@ button:hover {
 
 @media (max-width: 376px) {
   body {
-    background: linear-gradient(to bottom, #000428, #630330);
+    /* background: linear-gradient(to bottom, #000428, #630330); */
     font-family: 'Poppins', sans-serif;
     margin: 0;
   }
