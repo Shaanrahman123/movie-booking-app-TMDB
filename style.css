@@ -6,11 +6,13 @@
 :root,
 :root.light {
   --color-bg: #e7ebec;
-  --color-text: #eb333a;
+  --color-text: #ddc700;
   --card-bg-color: #fafafa;
   --hero-banner-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1);
   --movie-details-card: linear-gradient(to right, #fafafa, #81043e83);
-  --header: linear-gradient(to right, #eb333a, #eb333a);
+  --header: linear-gradient(to right, #ddc700, #ddc700);
+  --search-bg:#e7ebec;
+  --search-text: #333333;
 }
 
 :root.dark {
@@ -20,6 +22,8 @@
   --hero-banner-shadow: inset 2px -200px 93px -92px rgba(2, 0, 1, 1);
   --movie-details-card: linear-gradient(to right, #000428, #630330);
   --header: rgba(255, 255, 255, 0.25);
+  --search-bg: linear-gradient(to right, rgb(0, 4, 40), rgb(99, 3, 48));
+  --search-text: #ffffff
 }
 
 
@@ -63,6 +67,7 @@ body {
   /* box-shadow: 0 8px 32px 0 rgba(5, 6, 15, 0.37); */
   backdrop-filter: blur(13px);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: 0.3s ease-in-out all;
 }
 
 
@@ -93,9 +98,13 @@ body {
   border-radius: 50px;
   font-size: 1rem;
   text-align: center;
-  color: #fff;
+  color: var(--search-text);
   font-family: inherit;
-  background: linear-gradient(to right, #000428, #630330);
+  background: var(--search-bg);
+}
+.search :focus{
+  outline: none;
+  background: var(--search-bg);
 }
 
 .genre-section {
@@ -110,16 +119,8 @@ body {
   font-size: 30px;
 }
 
-
-
-
-.search:focus {
-  outline: 0;
-  background: #000428;
-}
-
 .search::placeholder {
-  color: white;
+  color: var(--search-text);
 }
 
 .head-para {
@@ -931,6 +932,7 @@ button:hover {
     position: relative;
     background-image: url(image/banner3.png);
     box-shadow: var(--hero-banner-shadow);
+    transition: 0.3s ease-in-out all;
     /* box-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1); */
   }
 
@@ -991,6 +993,22 @@ button:hover {
   #form .genre-section {
     margin-top: -15px;
   }
+
+  .search {
+    background-color: transparent;
+    border: 2px solid #ddd;
+    padding: 1rem 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    font-family: inherit;
+    background: linear-gradient(to right, #000428, #630330);
+
+  }
+  .search :focus{
+    background: var(--search-bg);
+  }
 }
 
 
@@ -999,17 +1017,9 @@ button:hover {
 
 
 
-
-* {
-  box-sizing: border-box;
-}
-
-
-
 body {
   background: var(--color-bg);
-  transition: 0.2s ease-in all;
-  font-family: 'Poppins', sans-serif;
+  transition: 0.3s ease-in-out all;
   margin: 0;
 }
 
