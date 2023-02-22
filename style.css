@@ -887,7 +887,13 @@ button:hover {
   .theme-toggler{
     position: absolute;
     top: 34px;
-    right: 24px;
+    right: 18px;
+  }
+  .form-content{
+    margin-left: 10px;
+  }
+  .form-content .search{
+    padding: 10px 0px;
   }
 
 }
