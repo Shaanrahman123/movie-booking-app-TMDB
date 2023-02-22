@@ -930,8 +930,8 @@ button:hover {
     /* background-color: purple; */
     position: relative;
     background-image: url(image/banner3.png);
-    /* box-shadow: var(--hero-banner-shadow); */
-    box-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1);
+    box-shadow: var(--hero-banner-shadow);
+    /* box-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1); */
   }
 
 
