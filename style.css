@@ -13,6 +13,7 @@
   --header: linear-gradient(to right, #ddc700, #ddc700);
   --search-bg:#e7ebec;
   --search-text: #333333;
+  --main-card: #333333;
 }
 
 :root.dark {
@@ -23,7 +24,8 @@
   --movie-details-card: linear-gradient(to right, #000428, #630330);
   --header: rgba(255, 255, 255, 0.25);
   --search-bg: linear-gradient(to right, rgb(0, 4, 40), rgb(99, 3, 48));
-  --search-text: #ffffff
+  --search-text: #ffffff;
+  --main-card: #ffffff;
 }
 
 
@@ -1013,7 +1015,7 @@ button:hover {
     color: #fff;
   }
   .main_card {
-    color: #111;
+    color: var(--main-card);
   }
 }
 
