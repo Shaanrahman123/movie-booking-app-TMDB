@@ -4,28 +4,28 @@
 
 const modeBtn = document.getElementById('checkbox');
 modeBtn.onchange = (e) => {
-  if (modeBtn.checked === true) {
-    document.documentElement.classList.remove("light")
-    document.documentElement.classList.add("dark")
-    window.localStorage.setItem('checkbox', 'dark');
-  } else {
-    document.documentElement.classList.remove("dark")
-    document.documentElement.classList.add("light")
-    window.localStorage.setItem('checkbox', 'light');
-  }
+    if (modeBtn.checked === true) {
+        document.documentElement.classList.remove("light")
+        document.documentElement.classList.add("dark")
+        window.localStorage.setItem('checkbox', 'dark');
+    } else {
+        document.documentElement.classList.remove("dark")
+        document.documentElement.classList.add("light")
+        window.localStorage.setItem('checkbox', 'light');
+    }
 }
 
 const mode = window.localStorage.getItem('checkbox');
 if (mode == 'dark') {
-  modeBtn.checked = true;
-  document.documentElement.classList.remove("light")
-  document.documentElement.classList.add("dark")
+    modeBtn.checked = true;
+    document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("dark")
 }
 
 if (mode == 'light') {
-  modeBtn.checked = false;
-  document.documentElement.classList.remove("dark")
-  document.documentElement.classList.add("light")
+    modeBtn.checked = false;
+    document.documentElement.classList.remove("dark")
+    document.documentElement.classList.add("light")
 }
 
 
@@ -526,20 +526,30 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
         getMovies(SEARCH_API + searchTerm);
         document.getElementById('topRated').style.display = 'none';
         document.getElementById('popular').style.display = 'none';
-        document.getElementById('toprated-hide').style.display= 'none';
-        document.getElementById('home-banner').style.display='none';
-        x.innerText='Search Results'
-        document.getElementById('popular-hide').style.display= 'none';
+        document.getElementById('toprated-hide').style.display = 'none';
+        document.getElementById('home-banner').style.display = 'none';
+        x.innerText = 'Search Results'
+        document.getElementById('popular-hide').style.display = 'none';
+
+    }
+    if (searchTerm == '%' || searchTerm == '@' || searchTerm == '$' || searchTerm == '&' || searchTerm == '^' || searchTerm == '!') {
+        // getMovies(SEARCH_API + searchTerm);
+        document.getElementById('topRated').style.display = 'none';
+        document.getElementById('popular').style.display = 'none';
+        document.getElementById('toprated-hide').style.display = 'none';
+        document.getElementById('home-banner').style.display = 'none';
+        x.innerText = 'Enter a valid movie name'
+        document.getElementById('popular-hide').style.display = 'none';
 
     }
     else if (searchTerm == '') {
         getMovies(API_URL)
         document.getElementById('topRated').style.display = 'block';
         document.getElementById('popular').style.display = 'block';
-        document.getElementById('toprated-hide').style.display= 'block';
-        x.innerText='Now Playing';
-        document.getElementById('home-banner').style.display='block';
-        document.getElementById('popular-hide').style.display= 'block';
+        document.getElementById('toprated-hide').style.display = 'block';
+        x.innerText = 'Now Playing';
+        document.getElementById('home-banner').style.display = 'block';
+        document.getElementById('popular-hide').style.display = 'block';
     }
     console.log(search.value);
 }, 600))

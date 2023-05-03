@@ -5,19 +5,19 @@
 
 :root,
 :root.light {
-  --color-bg: #e7ebec;
+  --bg-color: #e7ebec;
   --color-text: #ddc700;
   --card-bg-color: #fafafa;
   --hero-banner-shadow: inset 2px -200px 93px -92px rgba(231, 235, 236, 1);
   --movie-details-card: linear-gradient(to right, #fafafa, #ddc700);
   --header: linear-gradient(to right, #ddc700, #ddc700);
-  --search-bg:#e7ebec;
+  --search-bg: #e7ebec;
   --search-text: #333333;
   --main-card: #333333;
 }
 
 :root.dark {
-  --color-bg: linear-gradient(to bottom, black, #130109);
+  --bg-color: linear-gradient(to bottom, black, #130109);
   --color-text: #ffffff;
   --card-bg-color: #607d8b;
   --hero-banner-shadow: inset 2px -200px 93px -92px rgba(2, 0, 1, 1);
@@ -53,7 +53,7 @@ html {
 
 body {
   background: var(--color-bg);
-  transition: all 0.3s;
+  /* transition: all 0.3s; */
   margin: 0;
 }
 
@@ -105,7 +105,8 @@ body {
   font-family: inherit;
   background: var(--search-bg);
 }
-.search :focus{
+
+.search :focus {
   outline: none;
   background: var(--search-bg);
 }
@@ -505,13 +506,15 @@ button:hover {
 }
 
 @media (max-width: 968px) {
-  .head-para{
+  .head-para {
     margin: 44px;
   }
-  .banner-text{
+
+  .banner-text {
     display: none;
   }
-  .theme-toggler{
+
+  .theme-toggler {
     margin-top: 13px;
   }
 }
@@ -769,7 +772,7 @@ button:hover {
     border-radius: 10px;
   }
 
-  .theme-toggler{
+  .theme-toggler {
     position: absolute;
     top: 34px;
     right: 43px;
@@ -886,15 +889,17 @@ button:hover {
     border-radius: 10px;
   }
 
-  .theme-toggler{
+  .theme-toggler {
     position: absolute;
     top: 34px;
     right: 18px;
   }
-  .form-content{
+
+  .form-content {
     margin-left: 10px;
   }
-  .form-content .search{
+
+  .form-content .search {
     padding: 10px 0px;
   }
 
@@ -1008,12 +1013,15 @@ button:hover {
     background: linear-gradient(to right, #000428, #630330);
 
   }
-  .search :focus{
+
+  .search :focus {
     background: var(--search-bg);
   }
+
   .search::placeholder {
     color: #fff;
   }
+
   .main_card {
     color: var(--main-card);
   }
