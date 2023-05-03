@@ -533,7 +533,7 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
 
     }
     var specialChar = /[!@#$%^&*]/;
-    if (searchTerm == specialChar) {
+    if (specialChar.test(searchTerm)) {
         // getMovies(SEARCH_API + searchTerm);
         document.getElementById('topRated').style.display = 'none';
         document.getElementById('popular').style.display = 'none';

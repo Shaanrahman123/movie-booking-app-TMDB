@@ -664,7 +664,7 @@ button:hover {
 
 @media (max-width: 427px) {
   body {
-    /* background: linear-gradient(to right, #000428, #630330); */
+    background: var(--bg-color);
     font-family: 'Poppins', sans-serif;
     margin: 0;
   }
