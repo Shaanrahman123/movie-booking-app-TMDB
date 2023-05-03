@@ -532,7 +532,8 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
         document.getElementById('popular-hide').style.display = 'none';
 
     }
-    if (searchTerm == '%' || searchTerm == '@' || searchTerm == '$' || searchTerm == '&' || searchTerm == '^' || searchTerm == '!') {
+    var specialChar = /[!@#$%^&*]/;
+    if (searchTerm == specialChar) {
         // getMovies(SEARCH_API + searchTerm);
         document.getElementById('topRated').style.display = 'none';
         document.getElementById('popular').style.display = 'none';
