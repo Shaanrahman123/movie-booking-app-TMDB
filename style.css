@@ -52,8 +52,7 @@ html {
 }
 
 body {
-  background: var(--color-bg);
-  /* transition: all 0.3s; */
+  background: var(--bg-color);
   margin: 0;
 }
 
@@ -159,6 +158,7 @@ main {
 
 .movie {
   width: 220px;
+  cursor: pointer;
   margin: 1rem;
   box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -364,6 +364,7 @@ main {
   right: 45px;
   font-size: 60px;
   z-index: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {
@@ -786,7 +787,6 @@ button:hover {
 
 @media (max-width: 376px) {
   body {
-    /* background: linear-gradient(to bottom, #000428, #630330); */
     font-family: 'Poppins', sans-serif;
     margin: 0;
   }
