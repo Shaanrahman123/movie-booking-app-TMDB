@@ -106,16 +106,28 @@ function highlightSelection() {
 }
 
 // open the genre part
+
+
 function openGenre() {
     document.getElementById("mySidenav").style.width = "250px";
 }
-
 function closeGenre() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
-
-document.querySelector('#openbtn-genre').addEventListener('click', openGenre)
+document.querySelector('#openbtn-genre').addEventListener('click', function () {
+    if (document.getElementById("mySidenav").style.width === "0px") {
+        openGenre();
+    } else {
+        closeGenre();
+    }
+});
+function closeGenreOnBodyClick(event) {
+    if (!event.target.closest('#mySidenav') && !event.target.closest('#openbtn-genre')) {
+        closeGenre();
+    }
+}
+document.body.addEventListener('click', closeGenreOnBodyClick);
 document.querySelector('.closebtn-genre').addEventListener('click', closeGenre)
 // open the genre part
 
@@ -545,9 +557,9 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
     }
     else if (searchTerm == '') {
         getMovies(API_URL)
-        document.getElementById('topRated').style.display = 'block';
-        document.getElementById('popular').style.display = 'block';
-        document.getElementById('toprated-hide').style.display = 'block';
+        document.getElementById('topRated').style.display = 'flex';
+        document.getElementById('popular').style.display = 'flex';
+        document.getElementById('toprated-hide').style.display = 'flex';
         x.innerText = 'Now Playing';
         document.getElementById('home-banner').style.display = 'block';
         document.getElementById('popular-hide').style.display = 'block';
@@ -557,4 +569,6 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
 
 
 // 8888888888888888888    Searching the movie with debounce function 88888888888888888888888
+
+
 
