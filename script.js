@@ -60,10 +60,12 @@ function setGenre() {
     fetch(BASE_URL + '/genre/movie/list?' + API_KEY)
         .then(res => res.json())
         .then(({ genres }) => {
+            console.log(genres)
             genres.forEach(genre => {
                 const genrebox = document.createElement('div');
                 genrebox.classList.add('genre-element');
                 genrebox.id = genre.id;
+                // console.log(genre.id);
                 genrebox.innerText = genre.name;
 
                 genrebox.addEventListener('click', () => {
@@ -89,6 +91,8 @@ function setGenre() {
         })
 }
 
+// ********************************* Highlight the selection ********************************
+
 
 function highlightSelection() {
 
@@ -105,7 +109,11 @@ function highlightSelection() {
 
 }
 
-// open the genre part
+
+// ********************************* Highlight the selection ********************************
+
+
+// 8888888888888888888888888888  open the genre part   8888888888888888888888888888888888888
 
 
 function openGenre() {
@@ -129,22 +137,24 @@ function closeGenreOnBodyClick(event) {
 }
 document.body.addEventListener('click', closeGenreOnBodyClick);
 document.querySelector('.closebtn-genre').addEventListener('click', closeGenre)
-// open the genre part
 
 
+
+
+// 8888888888888888888888888888  open the genre part   8888888888888888888888888888888888888
 
 
 // 88888888888888888888888888888888888888888888  genres area  888888888888888888888888888888888888888888
 
 
 
-// 8888888888888888888    Fetch movie and show on main page  88888888888888888888888
+// 88888888888888888888888    Fetch movie and show on main page  8888888888888888888888888888888888888
 
 
 async function getMovies(url) {
     const res = await fetch(url)
     const data = await res.json()
-
+    // console.log(data)
     showMovies(data.results)
 }
 
@@ -296,6 +306,9 @@ function showMoviesPopular(popular) {
 
 // 8888888888888888888    get movie details area  88888888888888888888888
 
+// for now playing 
+
+
 const detailsofmovie = document.getElementById("movie_details")
 
 function openNav(movie) {
@@ -305,12 +318,14 @@ function openNav(movie) {
         .then(res => res.json())
         .then(({ title, overview, poster_path, original_language, vote_average, runtime, genres }) => {
 
+
             let genreName = [];
             for (let i = 0; i < genres.length; i++) {
                 genreName.push(genres[i].name + " ");
             }
-            const movieDetails = document.createElement('div');
 
+
+            const movieDetails = document.createElement('div');
             let price = Math.floor(Math.random() * (300 - 250 + 1) + 250);
 
             movieDetails.classList.add('main_card');
@@ -325,7 +340,7 @@ function openNav(movie) {
                     </div>
                     <div class="card_cat">
     
-                        <p class="genre">${genreName}</p>
+                        <p class="genre">${[...genreName]}</p>
                         <p class="time">${runtime}<span>&nbspMin</span></p>
                     </div>
                     <p class="disc">${overview}</p>
@@ -356,6 +371,8 @@ function openNav(movie) {
 
     document.getElementById("myNav").style.height = "100%";
 }
+
+// for popular movies
 
 
 
@@ -417,6 +434,10 @@ function openNav(popularMovie) {
 
     document.getElementById("myNav").style.height = "100%";
 }
+
+
+
+// for top rated
 
 
 function openNav(topRatedMovie) {
@@ -492,47 +513,34 @@ document.querySelector('.closebtn2').addEventListener('click', closeNav)
 
 
 
+
+
 // 8888888888888888888    Searching the movie with debounce function  88888888888888888888888
 
 
 
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault()
-
-//     const searchTerm = search.value;
-
-//     if (searchTerm && searchTerm !== '') {
-//         getMovies(SEARCH_API + searchTerm)
-
-//         search.value = ''
-//     }
-//     else if (searchTerm == '') {
-//         getMovies(API_URL)
-//     }
-// })
-
 const debounce = (func, wait, immediate) => {
-    let timeout
+    let timeout;
 
-    return function () {
-        const context = this, args = arguments
-        const later = function () {
-            timeout = null
-            if (!immediate) func.apply(context, args)
-        }
+    return (...args) => {
+        const later = () => {
+            timeout = null;
+            if (!immediate) func(...args);
+        };
 
-        const callNow = immediate && !timeout
-        clearTimeout(timeout)
-        timeout = setTimeout(later, wait)
-        if (callNow) func.apply(context, args)
-    }
-}
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (immediate && !timeout) func(...args);
+    };
+};
+
+
 
 const x = document.getElementById("playing-hide");
 
 document.querySelector('#search').addEventListener('input', debounce((e) => {
     const searchTerm = search.value;
-    e.preventDefault()
+    // e.preventDefault()
 
     if (searchTerm !== '') {
         getMovies(SEARCH_API + searchTerm);
