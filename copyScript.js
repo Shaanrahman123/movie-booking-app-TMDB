@@ -51,51 +51,43 @@ const search = document.getElementById('search')
 // 88888888888888888888888888888888888888888888  genres area  888888888888888888888888888888888888888888
 
 const genElement = document.getElementById("genre-element");
-const selectedGenre = [];
 
+var selectedGenre = [];
 setGenre();
-
-async function setGenre() {
+function setGenre() {
     genElement.innerHTML = '';
 
-    try {
-        const response = await fetch(BASE_URL + '/genre/movie/list?' + API_KEY);
-        const { genres } = await response.json();
+    fetch(BASE_URL + '/genre/movie/list?' + API_KEY)
+        .then(res => res.json())
+        .then(({ genres }) => {
+            console.log(genres)
+            genres.forEach(genre => {
+                const genrebox = document.createElement('div');
+                genrebox.classList.add('genre-element');
+                genrebox.id = genre.id;
+                genrebox.innerText = genre.name;
 
-        genres.forEach(genre => {
-            const genrebox = document.createElement('div');
-            genrebox.classList.add('genre-element');
-            genrebox.id = genre.id;
-            genrebox.innerText = genre.name;
-
-            genrebox.addEventListener('click', () => {
-                if (selectedGenre.length === 0) {
-                    selectedGenre.push(genre.id);
-                } else {
-                    if (selectedGenre.includes(genre.id)) {
-                        selectedGenre.forEach((id, idx) => {
-                            if (id === genre.id) {
-                                selectedGenre.splice(idx, 1);
-                            }
-                        });
-                    } else {
+                genrebox.addEventListener('click', () => {
+                    if (selectedGenre.length == 0) {
                         selectedGenre.push(genre.id);
+                    } else {
+                        if (selectedGenre.includes(genre.id)) {
+                            selectedGenre.forEach((id, idx) => {
+                                if (id == genre.id) {
+                                    selectedGenre.splice(idx, 1);
+                                }
+                            })
+                        } else {
+                            selectedGenre.push(genre.id);
+                        }
                     }
-                }
-                fetchAndShowMovies(API_URL + '&with_genres=' + encodeURI(selectedGenre.join(',')), main);
-                fetchAndShowMovies(API_URL_TOP_RATED + '&with_genres=' + encodeURI(selectedGenre.join(',')), topRatedMovielist);
-                fetchAndShowMovies(API_URL_POPULAR + '&with_genres=' + encodeURI(selectedGenre.join(',')), popularmovielist);
-                highlightSelection();
-
-            });
-
-            genElement.append(genrebox);
-        });
-    } catch (error) {
-        console.error('Error:', error);
-    }
+                    getMovies(API_URL + '&with_genres=' + encodeURI(selectedGenre.join(',')))
+                    highlightSelection()
+                })
+                genElement.append(genrebox);
+            })
+        })
 }
-
 
 // ********************************* Highlight the selection ********************************
 
@@ -149,62 +141,188 @@ document.querySelector('.closebtn-genre').addEventListener('click', closeGenre)
 
 // 8888888888888888888888888888  open the genre part   8888888888888888888888888888888888888
 
+// const ratingSelect = document.getElementById('ratingSelect');
+
+// ratingSelect.addEventListener('change', () => {
+//     const selectedRating = ratingSelect.value;
+//     filterMoviesByRating(selectedRating);
+// });
+
+// function filterMoviesByRating(rating) {
+//     const filteredMovies = result.filter(movie => movie.vote_average >= rating);
+//     showMovies(filteredMovies);
+// }
+
+
+
+// 88888888888888888888888888888888888888888888  genres area  888888888888888888888888888888888888888888
+
 
 
 // 88888888888888888888888    Fetch movie and show on main page  8888888888888888888888888888888888888
 
+// let result;
 
-function fetchAndShowMovies(url, targetElement) {
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            targetElement.innerHTML = '';
-            data.results.forEach((movie) => {
+async function getMovies(url) {
+    const res = await fetch(url)
+    const data = await res.json()
+    // console.log(data)
+    showMovies(data.results)
+    // result = data.results;
 
-                const { title, poster_path, vote_average, original_language, id } = movie;
-
-                const movieEl = document.createElement('div');
-                movieEl.classList.add('movie-item');
-                movieEl.classList.add('mb-50');
-
-                movieEl.innerHTML = `
-                
-                    <div class="movie-poster" id="${id}">
-                        <img src="${IMG_PATH + poster_path}" alt="${title}">
-                    </div>
-                    <div class="movie-content">
-                        <div class="top">
-                            <h5 class="title"><a href=''>${title}</a></h5>
-                            <span class="date">2021</span>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li><span class="quality">${original_language}</span></li>
-                                <li>
-                                    <span class="ratings"><i class="fas fa-star"></i>${vote_average}</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                 </div>
-                 `;
-
-                targetElement.appendChild(movieEl);
-
-                document.getElementById(id).addEventListener('click', () => {
-                    openNav(movie);
-                });
-            });
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
 }
 
-fetchAndShowMovies(API_URL, main);
-fetchAndShowMovies(API_URL_TOP_RATED, topRatedMovielist);
-fetchAndShowMovies(API_URL_POPULAR, popularmovielist);
+getMovies(API_URL);
+
+
+function showMovies(data) {
+    main.innerHTML = '';
+
+    data.forEach(movie => {
+
+
+        const { title, poster_path, vote_average, original_language, id } = movie
+
+        if (vote_average > ratingSelect) {
+
+        }
+        const movieEl = document.createElement('div')
+        movieEl.classList.add('movie')
+
+        movieEl.innerHTML = `
+        <div id="${id}">
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+            <div class="movie-info">
+            <h3>${title}</h3>
+                <div class ="rating_lang">
+                <span>${vote_average}</span>
+                <span >${original_language}</span></div>
+                
+            </div>
+        </div>
+        `
+        main.appendChild(movieEl)
+
+        document.getElementById(id).addEventListener('click', () => {
+            openNav(movie);
+        })
+
+    })
+
+}
+
+
+
+
+
+
+// 8888888888888888888    Fetch movie and show on main page  88888888888888888888888
+
+
+
+
+
+
+// 8888888888888888888    Fetch movie and show on top rated 88888888888888888888888
+
+
+getMoviesTopRated(API_URL_TOP_RATED);
+
+
+async function getMoviesTopRated(topratedURL) {
+    const top = await fetch(topratedURL)
+    const toprated = await top.json()
+    // console.log(toprated.results)
+    showMoviesTopRated(toprated.results)
+}
+
+
+function showMoviesTopRated(toprated) {
+    topRatedMovielist.innerHTML = '';
+
+    toprated.forEach(topRatedMovie => {
+        const { title, poster_path, vote_average, original_language, id } = topRatedMovie
+
+        const top_rated_movie = document.createElement('div')
+        top_rated_movie.classList.add('movie')
+
+        top_rated_movie.innerHTML = `
+        <div id="${id}">
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+            <div class="movie-info">
+            <h3>${title}</h3>
+                <div class ="rating_lang">
+                <span>${vote_average}</span>
+                <span >${original_language}</span></div>
+                
+            </div>
+        </div>
+        `
+        topRatedMovielist.appendChild(top_rated_movie);
+
+        document.getElementById(id).addEventListener('click', () => {
+            openNav(topRatedMovie);
+        })
+    })
+}
+
+
+
+
+
+
+// 8888888888888888888    Fetch movie and show on Top rated 88888888888888888888888
+
+
+
+
+// 8888888888888888888    Fetch movie and show on most popular 88888888888888888888888
+
+
+
+async function getMoviesPopular(Popularurl) {
+    const pop = await fetch(Popularurl)
+    const popular = await pop.json()
+    showMoviesPopular(popular.results)
+}
+
+getMoviesPopular(API_URL_POPULAR);
+
+function showMoviesPopular(popular) {
+    popularmovielist.innerHTML = '';
+
+    popular.forEach(popularMovie => {
+        const { title, poster_path, vote_average, original_language, id } = popularMovie
+
+        const pop_movie_ele = document.createElement('div')
+        pop_movie_ele.classList.add('movie')
+
+        pop_movie_ele.innerHTML = `
+        <div id="${id}">
+            <img src="${IMG_PATH + poster_path}" alt="${title}">
+            <div class="movie-info">
+            <h3>${title}</h3>
+                <div class ="rating_lang">
+                <span>${vote_average}</span>
+                <span >${original_language}</span></div>
+                
+            </div>
+        </div>
+        `
+        popularmovielist.appendChild(pop_movie_ele);
+
+        document.getElementById(id).addEventListener('click', () => {
+            openNav(popularMovie);
+        })
+    })
+}
+
+
+
+// 8888888888888888888    Fetch movie and show on most popular 88888888888888888888888
+
+
+
 
 
 
@@ -446,23 +564,21 @@ const x = document.getElementById("playing-hide");
 
 document.querySelector('#search').addEventListener('input', debounce((e) => {
     const searchTerm = search.value;
-    var specialChar = /[!@#$%^&*]/;
+    // e.preventDefault()
 
     if (searchTerm !== '') {
-        const searchURL = SEARCH_API + searchTerm;
-        document.getElementById("hide1").style.display = 'none';
-        document.getElementById("hide2").style.display = 'none';
-        document.getElementById("hide3").style.display = 'none';
-        document.getElementById('home-banner').style.display = 'none';
+        getMovies(SEARCH_API + searchTerm);
         document.getElementById('topRated').style.display = 'none';
         document.getElementById('popular').style.display = 'none';
         document.getElementById('toprated-hide').style.display = 'none';
+        document.getElementById('home-banner').style.display = 'none';
+        x.innerText = 'Search Results'
         document.getElementById('popular-hide').style.display = 'none';
-        x.innerText = 'Search Results';
-        x.style.margin = "150px 0px 51px -0px";
-        fetchAndShowMovies(searchURL, main);
+
     }
-    else if (specialChar.test(searchTerm)) {
+    var specialChar = /[!@#$%^&*]/;
+    if (specialChar.test(searchTerm)) {
+        // getMovies(SEARCH_API + searchTerm);
         document.getElementById('topRated').style.display = 'none';
         document.getElementById('popular').style.display = 'none';
         document.getElementById('toprated-hide').style.display = 'none';
@@ -472,17 +588,13 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
 
     }
     else if (searchTerm == '') {
-        fetchAndShowMovies(API_URL, main)
-        document.getElementById('home-banner').style.display = 'block';
+        getMovies(API_URL)
         document.getElementById('topRated').style.display = 'flex';
         document.getElementById('popular').style.display = 'flex';
         document.getElementById('toprated-hide').style.display = 'flex';
         x.innerText = 'Now Playing';
-        x.style.margin = "0px 0px 51px -0px";
+        document.getElementById('home-banner').style.display = 'block';
         document.getElementById('popular-hide').style.display = 'block';
-        document.getElementById("hide1").style.display = 'block';
-        document.getElementById("hide2").style.display = 'block';
-        document.getElementById("hide3").style.display = 'block';
     }
     console.log(search.value);
 }, 600))

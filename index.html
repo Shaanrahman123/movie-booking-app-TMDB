@@ -6,97 +6,191 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Booking App</title>
-    <script type="module" crossorigin src="assets/index.b4e37db4.js"></script>
-    <link rel="modulepreload" href="assets/vendor.409190d6.js">
-    <link rel="stylesheet" href="assets/index.f6704e6f.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header id="scroll-Top" class="header-section">
-        <div class="logo-section">
-            <a href=""><img src="image/logo.png" alt=""></a>
-        </div>
-        <div id="form">
-            <div class="form-content">
-                <input type="text" autocomplete="off" placeholder="Search" id="search" class="search">
+    <header>
+        <div id="scroll-Top" class="header-section">
+            <div class="logo-section">
+                <a href=""><img src="image/logo.png" alt=""></a>
             </div>
+            <div id="form">
+                <div class="form-content">
+                    <input type="text" autocomplete="off" placeholder="Search" id="search" class="search">
+                </div>
 
-            <div class="genre-section">
-                <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
-            </div>
-            <div class="theme-toggler">
-                <input type="checkbox" id="checkbox" class="checkbox">
-                <label for="checkbox" class="checkbox-label">
-                    <span class="ball"></span>
-                </label>
+                <div class="genre-section">
+                    <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
+                </div>
+                <div class="theme-toggler">
+                    <input type="checkbox" id="checkbox" class="checkbox">
+                    <label for="checkbox" class="checkbox-label">
+                        <span class="ball"></span>
+                    </label>
+                </div>
             </div>
         </div>
     </header>
-    <div id="home-banner" class="home-banner">
-        <div class="banner-text typewriter">
-            <h1>Unlimited movies, TV shows and more.</h1>
+
+
+
+    <!-- banner-area -->
+    <section id="home-banner" class="banner-area banner-bg" style="background-image: url(./image/banner.jpg);">
+
+        <div class="banner-content">
+            <h6 class="sub-title">Movie Mania</h6>
+            <h2 class="title">Unlimited
+                <span>Movie</span>, <br> TVs Shows, & More.
+            </h2>
+            <div class="banner-meta">
+                <ul>
+                    <li class="category">
+                        <a href="#">Romance,</a>
+                        <a href="#">Drama,</a>
+                        <a href="#">Action,</a>
+                        <a href="#">Animated</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="banner-btn"><i class="fas fa-play"></i> Watch
+                Now</a>
+
         </div>
+    </section>
+    <!-- banner-area-end -->
+
+    <div id="hide1" class="section-title title-style-two mb-25 mx-21 mt-50 hid">
+        <span class="sub-title ">ONLINE STREAMING</span>
     </div>
-
-
-
-    </div>
-
-
     <div class="head-para">
         <h1 id="playing-hide">Now Playing</h1>
     </div>
+
     <!-- movie details section  -->
 
-    <main id="main">
 
-        <div class="movie" data-aos="fade-up">
-            <img src="" alt="Image">
-            <div class="movie-info">
-                <span></span>
-                <span></span>
-                <h3></h3>
+    <!-- <div > -->
+    <div class="movie-box" id="main">
+        <div class="movie-item">
+            <div class="movie-poster">
+                <a href=""><img src="" alt=""></a>
+            </div>
+            <div class="movie-content">
+                <div class="top">
+                    <h5 class="title"><a href=""></a></h5>
+                    <span class="date"></span>
+                </div>
+                <div class="bottom">
+                    <ul>
+                        <li><span class="quality"></span></li>
+                        <li>
+                            <span class="ratings"><i class="fas fa-star"></i></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </main>
-
-    <div class="head-para" id="popular-hide">
-        <h1>Most Popular</h1>
     </div>
+    <!-- </div> -->
 
-    <section id="popular">
-        <div class="movie">
-            <img src="" alt="Image">
 
-            <div class="movie-info">
-
-                <span>rating</span>
-                <span>language</span>
-                <h3>title</h3>
+    <section class="live-area live-bg fix" style="background-image: url(./image/live_bg.jpg);">
+        <div class="container-online">
+            <div class="4k">
+                <div class="section-title title-style-two mb-25">
+                    <span class="sub-title">ONLINE STREAMING</span>
+                    <h2 class="title">Live Movie & TV Shows For Friends & Family</h2>
+                </div>
+                <div class="live-movie-content">
+                    <p>Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations
+                        of
+                        passages of lorem Ipsum available, but the majority have suffered alteration.</p>
+                    <div class="live-fact-wrap">
+                        <div class="resolution">
+                            <h2>HD 4K</h2>
+                        </div>
+                        <div class="active-customer">
+                            <h4><span class="odometer"></span>20K+</h4>
+                            <p>Active Customer</p>
+                        </div>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="watch-btn"><i class="fas fa-play"></i>
+                        Watch Now</a>
+                </div>
+            </div>
+            <div class="family">
+                <div class="live-movie-img">
+                    <img src="./image/live_img.png" alt="">
+                </div>
             </div>
         </div>
     </section>
 
+    <div id="hide2" class="section-title title-style-two mb-25 mx-21 mt-50 ">
+        <span class="sub-title ">ONLINE STREAMING</span>
+    </div>
+    <div class="head-para" id="popular-hide">
+        <h1>Most Popular</h1>
+    </div>
 
+
+    <div class="movie-box" id="popular">
+        <div class="movie-item">
+            <div class="movie-poster">
+                <a href="movie-details.html"><img src="" alt=""></a>
+            </div>
+            <div class="movie-content">
+                <div class="top">
+                    <h5 class="title"><a href=""></a></h5>
+                    <span class="date"></span>
+                </div>
+                <div class="bottom">
+                    <ul>
+                        <li><span class="quality"></span></li>
+                        <li>
+                            <span class="ratings"><i class="fas fa-star"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="hide3" class="section-title title-style-two mb-25 mx-21 mt-50 hid">
+        <span class="sub-title ">ONLINE STREAMING</span>
+    </div>
 
     <div class="head-para" id="toprated-hide">
         <h1>Top Rated</h1>
     </div>
 
-    <section id="topRated">
-        <div class="movie">
-            <img src="" alt="Image">
-
-            <div class="movie-info">
-
-                <span>rating</span>
-                <span>language</span>
-                <h3>title</h3>
+    <div class="movie-box" id="topRated">
+        <div class="movie-item">
+            <div class="movie-poster">
+                <img src="" alt="">
+            </div>
+            <div class="movie-content">
+                <div class="top">
+                    <h5 class="title"><a href=""></a></h5>
+                    <span class="date"></span>
+                </div>
+                <div class="bottom">
+                    <ul>
+                        <li><span class="quality"></span></li>
+                        <li>
+                            <span class="ratings"><i class="fas fa-star"></i></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
     </section>
+
 
 
     <!-- side genres area  -->
@@ -154,6 +248,7 @@
 
 </body>
 
+
 <script>
 
     window.onscroll = function () {
@@ -163,15 +258,18 @@
     function scrollFunction() {
         if (screen.width > 900) {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                document.getElementById("scroll-Top").style.top = "0px";
+                document.getElementById("scroll-Top").classList.add("header-section");
+                document.getElementById("scroll-Top").classList.add("header-section2");
             } else {
-                document.getElementById("scroll-Top").style.top = "50px";
+                document.getElementById("scroll-Top").classList.add("header-section");
+                document.getElementById("scroll-Top").classList.remove("header-section2");
             }
         }
 
 
     }
 </script>
+
 <script src="script.js"></script>
 
 </html>
