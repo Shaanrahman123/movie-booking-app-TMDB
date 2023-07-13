@@ -21,7 +21,7 @@
       justify-content: center;
       align-items: center;
       font-family: 'Lato', sans-serif;
-      background: linear-gradient(to bottom, #000428, #630330);
+      background: linear-gradient(to bottom, black, #130109)
     }
 
     .checkout-bg {
@@ -36,7 +36,7 @@
       grid-template-columns: repeat(3, 1fr);
       border-radius: 15px;
       background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      box-shadow: 0 8px 32px 0 rgba(23, 13, 69, 0.37);
       backdrop-filter: blur(7.5px);
       -webkit-backdrop-filter: blur(7.5px);
       border-radius: 10px;
@@ -162,11 +162,13 @@
 
     input:focus {
       outline: 0;
-      border-color: linear-gradient(to right, #000428, #630330);;
+      border-color: linear-gradient(to right, #000428, #630330);
+      ;
     }
 
     input:focus+.input-icon:after {
-      border-right-color: linear-gradient(to right, #000428, #630330);;
+      border-right-color: linear-gradient(to right, #000428, #630330);
+      ;
     }
 
     input[type="radio"] {
@@ -193,7 +195,7 @@
     input:checked+label:before {
       background: linear-gradient(to right, #000428, #630330);
       color: #fff;
-      border-color:linear-gradient(to right, #000428, #630330);
+      border-color: linear-gradient(to right, #000428, #630330);
     }
 
     input[type="checkbox"] {
@@ -332,10 +334,12 @@
         padding: 5px;
 
       }
-      input[type="radio"]+label{
+
+      input[type="radio"]+label {
         padding: 5px;
       }
-      select{
+
+      select {
         margin-bottom: 10px;
       }
     }
@@ -346,6 +350,7 @@
       body {
         height: auto;
       }
+
       .checkout-container {
         display: flex;
         flex-direction: column;
@@ -389,10 +394,12 @@
         padding: 5px;
 
       }
-      input[type="radio"]+label{
+
+      input[type="radio"]+label {
         padding: 5px;
       }
-      select{
+
+      select {
         margin-bottom: 10px;
       }
     }
@@ -492,13 +499,8 @@
 
 </body>
 <script>
-  
+
 </script>
 <script src="checkout.js"></script>
 
 </html>
-
-
-
-
-

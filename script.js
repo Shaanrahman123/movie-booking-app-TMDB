@@ -162,7 +162,7 @@ function fetchAndShowMovies(url, targetElement) {
             targetElement.innerHTML = '';
             data.results.forEach((movie) => {
 
-                const { title, poster_path, vote_average, original_language, id } = movie;
+                const { title, poster_path, vote_average, release_date, original_language, id } = movie;
 
                 const movieEl = document.createElement('div');
                 movieEl.classList.add('movie-item');
@@ -176,7 +176,7 @@ function fetchAndShowMovies(url, targetElement) {
                     <div class="movie-content">
                         <div class="top">
                             <h5 class="title"><a href=''>${title}</a></h5>
-                            <span class="date">2021</span>
+                            <span class="date">${release_date.substring(0, 4)}</span>
                         </div>
                         <div class="bottom">
                             <ul>
@@ -453,6 +453,7 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
         document.getElementById("hide1").style.display = 'none';
         document.getElementById("hide2").style.display = 'none';
         document.getElementById("hide3").style.display = 'none';
+        document.getElementById("live-area").style.display = 'none';
         document.getElementById('home-banner').style.display = 'none';
         document.getElementById('topRated').style.display = 'none';
         document.getElementById('popular').style.display = 'none';
@@ -477,6 +478,7 @@ document.querySelector('#search').addEventListener('input', debounce((e) => {
         document.getElementById('topRated').style.display = 'flex';
         document.getElementById('popular').style.display = 'flex';
         document.getElementById('toprated-hide').style.display = 'flex';
+        document.getElementById("live-area").style.display = 'block';
         x.innerText = 'Now Playing';
         x.style.margin = "0px 0px 51px -0px";
         document.getElementById('popular-hide').style.display = 'block';

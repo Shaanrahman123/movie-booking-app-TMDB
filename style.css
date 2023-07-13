@@ -110,7 +110,9 @@ body {
   text-align: center;
   color: var(--search-text);
   font-family: inherit;
-  background: var(--search-bg);
+  /* background: var(--search-bg); */
+  background: #12151e none repeat scroll 0 0;
+  border: 2px solid #e4d804;
 }
 
 .search :focus {
@@ -298,8 +300,13 @@ body {
 
 .genre_background_active {
   /* background-color: red; */
-  background: linear-gradient(to right, #000428, #630330);
-  color: white;
+  background: #ddc700;
+  color: black !important;
+  font-weight: 700;
+}
+
+#openbtn-genre {
+  color: #ddc700;
 }
 
 /* side navbar area */
@@ -553,7 +560,8 @@ button:hover {
   .logo-section {
     width: 120px;
     position: relative;
-    left: -113px;
+    /* left: -113px; */
+    padding-bottom: 20px;
   }
 
   .logo-section img {
@@ -780,11 +788,11 @@ button:hover {
     border-radius: 10px;
   }
 
-  .theme-toggler {
+  /* .theme-toggler {
     position: absolute;
     top: 34px;
     right: 43px;
-  }
+  } */
 
 }
 
@@ -803,16 +811,17 @@ button:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
   }
 
   .genre-section span {
-    font-size: 25px;
+    font-size: 31px;
   }
 
   .head-para {
     margin-left: 24px;
     font-size: 0.8rem;
-    margin: 32px 0px 29px 26px;
+    margin: 32px 0px 29px 0px;
   }
 
   .movie {
@@ -896,11 +905,11 @@ button:hover {
     border-radius: 10px;
   }
 
-  .theme-toggler {
+  /* .theme-toggler {
     position: absolute;
     top: 34px;
     right: 18px;
-  }
+  } */
 
   .form-content {
     margin-left: 10px;
@@ -910,10 +919,22 @@ button:hover {
     padding: 10px 0px;
   }
 
+
+  #form .form-content,
+  .genre-section span,
+  .theme-toggler {
+    margin-top: 0;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
 }
 
 
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
   .header-section {
     padding: 1rem;
     display: flex;
@@ -1008,7 +1029,7 @@ button:hover {
   }
 
   #form .form-content {
-    margin-right: 286px;
+    margin-right: 388px;
     margin-top: 2px;
   }
 
@@ -1225,8 +1246,16 @@ button:hover {
     display: none;
   }
 
+  .movie-content .top .title a {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
   .banner-bg {
-    padding: 71px 0 143px 2px;
+    padding: 136px 0 143px 2px;
     background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1250,6 +1279,47 @@ button:hover {
     padding: 6px 24px;
   }
 
+
+  #form .form-content,
+  .genre-section span,
+  .theme-toggler {
+    margin-top: 0;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+
+  #form .form-content {
+    margin-right: 177px;
+    margin-top: 2px;
+  }
+
+  .theme-toggler {
+    margin-right: 20px;
+  }
+
+  .banner-bg {
+    padding: 0px 0 0px;
+    background-position: top right;
+    background-size: cover;
+  }
+
+  .banner-content {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 0px;
+    padding: 112px 0px;
+
+  }
 }
 
 

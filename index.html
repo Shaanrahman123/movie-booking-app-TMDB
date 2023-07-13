@@ -23,14 +23,15 @@
                     <input type="text" autocomplete="off" placeholder="Search" id="search" class="search">
                 </div>
 
-                <div class="genre-section">
-                    <span id="openbtn-genre" style="cursor:pointer; color: white;">&#9776; Genre</span>
-                </div>
+
                 <div class="theme-toggler">
                     <input type="checkbox" id="checkbox" class="checkbox">
                     <label for="checkbox" class="checkbox-label">
                         <span class="ball"></span>
                     </label>
+                </div>
+                <div class="genre-section">
+                    <span id="openbtn-genre" style="cursor:pointer; ">&#9776;</span>
                 </div>
             </div>
         </div>
@@ -98,7 +99,7 @@
     <!-- </div> -->
 
 
-    <section class="live-area live-bg fix" style="background-image: url(./image/live_bg.jpg);">
+    <section id="live-area" class="live-area live-bg fix" style="background-image: url(./image/live_bg.jpg);">
         <div class="container-online">
             <div class="4k">
                 <div class="section-title title-style-two mb-25">
@@ -246,6 +247,12 @@
         </div>
     </div>
 
+
+
+
+
+
+
 </body>
 
 
@@ -256,7 +263,7 @@
     };
 
     function scrollFunction() {
-        if (screen.width > 900) {
+        if (screen.width > 767) {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
                 document.getElementById("scroll-Top").classList.add("header-section");
                 document.getElementById("scroll-Top").classList.add("header-section2");
